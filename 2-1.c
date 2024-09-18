@@ -29,12 +29,12 @@ void init(){
 void select(){
 	j=pr=sum=0;
 	while(1){
-		a=getchar();
+		if((a=getchar())==EOF)  {step=4; return;}
 		if(END()) break;
 		if(a<65||a>90) continue;
-		j++;  scanf("%d%d",&X[j],&Y[j]); //不能写成scanf("%d%d",&X[++j],&Y[j]);这样X,Y的值对应不起来 
+		j++;  scanf("%d%d",&X[j],&Y[j]);
 		sum+=s[X[j]]*Y[j];
-		if(buy[X[j]]+Y[j]>num[X[j]]) pr=1;
+		if(buy[X[j]]+Y[j]>num[X[j]]||a!=goods[X[j]]) pr=1;
 	}
 }
 
@@ -56,11 +56,12 @@ int main(){
 		switch(step){
 			case 1:
 				select();
+				if(step==4) return 0;
 				step=pr?2:3;
 			break;
 			case 2:
 				step=1;
-				printf("没货了,操作失败\n");	
+				printf("操作失败\n");	
 			break;
 			case 3:
 				pay();
@@ -107,6 +108,6 @@ END
 out:
 1
 4
-没货了，操作失败 
+操作失败 
 2
 */
