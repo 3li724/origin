@@ -6,7 +6,7 @@ struct in {
 	int id,x,y,z;
 }stack[N];
 
-char a,b,goods[7];
+char a,b,goods[7],in[N];
 int u,v,w,j,k,p,W,step=1;
 int s[7],num[7],buy[7],ans[N],sum[N];
 
@@ -20,6 +20,15 @@ int end(){
 	for(int i=1;i<=5;i++)
 		if(buy[i]<num[i])  return 0;
 	return 1;
+}
+
+void deal(int nm){
+	while(1){
+		gets(in);
+		if(in[0]=='b') nm--;
+		else nm++;
+		if(nm==0) return;	
+	}
 }
 
 void init(){
@@ -61,6 +70,7 @@ void select(){
 			if(step==3) W-=stack[k].z;
 			k--;  return;
 		}
+		if(a=='1'||a=='2'||a=='5') { deal(0); continue;}
 		if(a<65||a>90) continue;
 		scanf("%d%d",&u,&v);
 		if(stack[k].id==3&&sum[p]) p+=1;
@@ -144,6 +154,10 @@ END
 5
 5
 5
+5
+A 1 3
+back
+back
 B 1 3
 END
 5
