@@ -6,9 +6,9 @@ int x,y,s,t,w,ex,num;
 int main(){
 	scanf("%c%d%d%d",&a,&ex,&w,&num);
 	while((b=getchar())!=EOF){
+		if(num==0) break;
 		if(b<65||b>90) continue;
 		scanf("%d%d",&x,&y); 
-		if(num==0) break;
 		if(b!=a||x!=ex||y>num) {
 			printf("²Ù×÷Ê§°Ü\n");
 			continue;
